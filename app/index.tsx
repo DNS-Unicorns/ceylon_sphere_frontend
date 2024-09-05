@@ -33,13 +33,16 @@ const styles = StyleSheet.create({
   image:{
   },
   button:{
-    backgroundColor: '#4287f5',
+    backgroundColor: '#18BA83',
     paddingVertical: 15,
-    borderRadius: 30,
+    borderRadius: 8,
     alignItems: 'center',
-    marginTop: 30,
+    marginVertical: 30,
+    paddingHorizontal: 100,
   },
   continueText:{
-
+    color: '#fff',
+    fontSize: 20,
+    // fontWeight: 'bold',
   },
 })

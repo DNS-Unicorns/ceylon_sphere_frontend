@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-nativ
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 
-export default function Register() {
+export default function register() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [country, setCountry] = useState('');
@@ -12,15 +12,18 @@ export default function Register() {
 
     return (
         <View style={styles.container}>
-            {/* Back Button */}
-            <TouchableOpacity onPress={() => alert('Go Back')} style={styles.backButton}>
-                <Ionicons name="arrow-back" size={24} color="black" />
-            </TouchableOpacity>
 
-            {/* Title Section */}
-            <View style={styles.headerContainer}>
-                <Text style={styles.titleText}>Getting Started</Text>
-                <Text style={styles.subtitleText}>Create your account first</Text>
+            <View style={styles.container2}>
+                {/* Back Button */}
+                <TouchableOpacity onPress={() => alert('Go Back')} style={styles.backButton}>
+                    <Ionicons name="arrow-back" size={24} color="black" />
+                </TouchableOpacity>
+
+                {/* Title Section */}
+                <View style={styles.headerContainer}>
+                    <Text style={styles.titleText}>Getting Started</Text>
+                    <Text style={styles.subtitleText}>Create your account first</Text>
+                </View>
             </View>
 
             {/* Input Fields */}
@@ -103,12 +106,12 @@ const styles = StyleSheet.create({
         marginBottom: 20,
     },
     titleText: {
-        fontSize: 24,
+        fontSize: 44,
         fontWeight: 'bold',
         color: '#fff',
         textAlign: 'center',
         backgroundColor: '#4CAF50',
-        paddingVertical: 20,
+        // paddingVertical: 20,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
     },
@@ -120,6 +123,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#4CAF50',
         borderBottomLeftRadius: 20,
         borderBottomRightRadius: 20,
+        marginBottom: 30,
     },
     inputContainer: {
         marginBottom: 15,
@@ -178,4 +182,14 @@ const styles = StyleSheet.create({
         color: '#4CAF50',
         fontWeight: 'bold',
     },
+    container2: {
+        backgroundColor: '#4CAF50',
+        marginBottom: 30,
+        padding:-20,
+        margin:-20,
+        // borderEndStartRadius:80,\
+        // borderRadius: 80,
+        borderBottomRightRadius: 40,
+        borderBottomLeftRadius: 40,
+    }
 });

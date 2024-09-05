@@ -8,7 +8,7 @@ export default function Step1() {
 
     const router = useRouter();
 
-    const [progress, setProgress] = useState(0.4);  // Set initial progress
+    const [progress, setProgress] = useState(0.2);  // Set initial progress
 
     const handleFileUpload = (fileType) => {
         // You can implement the file picker here using expo-document-picker or react-native-document-picker

@@ -10,7 +10,7 @@ export default function Step1() {
 
     const router = useRouter();
 
-    const [progress, setProgress] = useState(0.6);  // Set initial progress
+    const [progress, setProgress] = useState(0.5);  // Set initial progress
     const [nationality, setNationality] = useState('');
     const [residence, setResidence] = useState('');
     const [visaCategory, setVisaCategory] = useState('');
