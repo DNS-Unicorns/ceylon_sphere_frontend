@@ -1,91 +1,125 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, TextInput } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import { ProgressBar } from 'react-native-paper';
+import { useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 
-export default function Register() {
-    const [name, setName] = useState('');
+export default function ContactDetails() {
+
+    const router = useRouter();
+    const [progress, setProgress] = useState(0.8); // Adjust progress
+
     const [email, setEmail] = useState('');
-    const [country, setCountry] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    const [countryCode, setCountryCode] = useState('');
+    const [mobileNumber, setMobileNumber] = useState('');
+    const [facebook, setFacebook] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [instagram, setInstagram] = useState('');
+
+    const handleSaveAndContinue = () => {
+        // Handle save and next step
+        setProgress(0.9); // Example progress
+        alert('Next Step');
+    };
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
+
             {/* Back Button */}
-            <TouchableOpacity onPress={() => alert('Go Back')} style={styles.backButton}>
-                <Ionicons name="arrow-back" size={24} color="black" />
+            <TouchableOpacity onPress={() => router.back()} style={styles.arrow}>
+                <Ionicons name='arrow-back' size={24} color={'black'} />
             </TouchableOpacity>
 
-            {/* Title Section */}
-            <View style={styles.headerContainer}>
-                <Text style={styles.titleText}>Getting Started</Text>
-                <Text style={styles.subtitleText}>Create your account first</Text>
-            </View>
+            {/* Progress Bar */}
+            <ProgressBar progress={progress} color="#4CAF50" style={styles.progressBar} />
 
-            {/* Input Fields */}
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Name</Text>
-                <TextInput
-                    value={name}
-                    onChangeText={setName}
-                    style={styles.input}
-                    placeholder="John Doe"
-                />
-            </View>
+        <View style={styles.cont1}>
 
+            <Text style={styles.stepText}>STEP 4</Text>
+            <Text style={styles.titleText}>Contact Details</Text>
+
+            {/* Personal Email ID */}
             <View style={styles.inputContainer}>
-                <Text style={styles.label}>Email</Text>
+                <Text style={styles.labelText}>Personal Email ID <Text style={styles.required}>*</Text></Text>
                 <TextInput
                     value={email}
                     onChangeText={setEmail}
                     style={styles.input}
-                    placeholder="john123@example.com"
-                    keyboardType="email-address"
+                    placeholder="Enter your email"
+                    keyboardType='email-address'
                 />
             </View>
 
+            {/* Country Code */}
             <View style={styles.inputContainer}>
-                <Text style={styles.label}>Country</Text>
-                <View style={styles.pickerContainer}>
-                    <Picker
-                        selectedValue={country}
-                        onValueChange={(itemValue) => setCountry(itemValue)}
-                        style={styles.picker}>
-                        <Picker.Item label="Select Country" value="" />
-                        <Picker.Item label="Germany" value="Germany" />
-                        <Picker.Item label="United States" value="United States" />
-                        <Picker.Item label="Canada" value="Canada" />
-                    </Picker>
-                </View>
+                <Text style={styles.labelText}>Country Code <Text style={styles.required}>*</Text></Text>
+                <Picker
+                    selectedValue={countryCode}
+                    onValueChange={(itemValue) => setCountryCode(itemValue)}
+                    style={styles.picker}
+                >
+                    <Picker.Item label="Select Country Code" value="" />
+                    <Picker.Item label="+1" value="+1" />
+                    <Picker.Item label="+44" value="+44" />
+                    <Picker.Item label="+91" value="+91" />
+                </Picker>
             </View>
 
+            {/* Mobile Number */}
             <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordContainer}>
-                    <TextInput
-                        value={password}
-                        onChangeText={setPassword}
-                        style={styles.passwordInput}
-                        placeholder="••••••••"
-                        secureTextEntry={!showPassword}
-                    />
-                    <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                        <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={24} color="gray" />
-                    </TouchableOpacity>
-                </View>
+                <Text style={styles.labelText}>Mobile Number <Text style={styles.required}>*</Text></Text>
+                <TextInput
+                    value={mobileNumber}
+                    onChangeText={setMobileNumber}
+                    style={styles.input}
+                    placeholder="Enter your mobile number"
+                    keyboardType='numeric'
+                />
             </View>
 
-            {/* Sign Up Button */}
-            <TouchableOpacity style={styles.signUpButton} onPress={() => alert('Sign Up')}>
-                <Text style={styles.signUpButtonText}>Sign up</Text>
+            {/* Facebook */}
+            <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Facebook</Text>
+                <TextInput
+                    value={facebook}
+                    onChangeText={setFacebook}
+                    style={styles.input}
+                    placeholder="Enter Facebook username"
+                />
+            </View>
+
+            {/* Twitter */}
+            <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Twitter</Text>
+                <TextInput
+                    value={twitter}
+                    onChangeText={setTwitter}
+                    style={styles.input}
+                    placeholder="Enter Twitter username"
+                />
+            </View>
+
+            {/* Instagram */}
+            <View style={styles.inputContainer}>
+                <Text style={styles.labelText}>Instagram</Text>
+                <TextInput
+                    value={instagram}
+                    onChangeText={setInstagram}
+                    style={styles.input}
+                    placeholder="Enter Instagram username"
+                />
+            </View>
+
+            {/* Save & Continue Button */}
+            <TouchableOpacity onPress={() => router.push('/Visa/Apply_Steps/step5')} style={styles.button}>
+                <Text style={styles.buttonText}>Save & Continue</Text>
             </TouchableOpacity>
 
-            {/* Login Link */}
-            <View style={styles.footerContainer}>
-                <Text>Already a Member? <Text style={styles.loginLink} onPress={() => alert('Login')}>Login</Text></Text>
-            </View>
         </View>
+
+
+        </ScrollView>
     );
 }
 
@@ -95,87 +129,68 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#fff',
     },
-    backButton: {
-        marginTop: 20,
-        marginBottom: 20,
-    },
-    headerContainer: {
-        marginBottom: 20,
+    stepText: {
+        fontSize: 16,
+        textAlign: 'center',
+        marginVertical: 10,
+        color: '#333',
     },
     titleText: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#fff',
         textAlign: 'center',
-        backgroundColor: '#4CAF50',
-        paddingVertical: 20,
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20,
-    },
-    subtitleText: {
-        fontSize: 16,
-        textAlign: 'center',
-        marginVertical: 10,
-        color: '#fff',
-        backgroundColor: '#4CAF50',
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        marginBottom: 20,
+        color: '#333',
     },
     inputContainer: {
-        marginBottom: 15,
+        marginBottom: 20,
     },
-    label: {
+    labelText: {
         fontSize: 16,
         marginBottom: 5,
         color: '#333',
     },
     input: {
-        borderWidth: 1,
-        borderColor: '#ccc',
+        backgroundColor: '#f8f8f8',
         borderRadius: 8,
         padding: 12,
-        backgroundColor: '#f8f8f8',
-    },
-    pickerContainer: {
         borderWidth: 1,
         borderColor: '#ccc',
-        borderRadius: 8,
-        backgroundColor: '#f8f8f8',
+        fontSize: 16,
     },
     picker: {
-        height: 50,
-        color: '#333',
-    },
-    passwordContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderColor: '#ccc',
+        backgroundColor: '#f8f8f8',
         borderRadius: 8,
         padding: 12,
-        backgroundColor: '#f8f8f8',
+        borderWidth: 1,
+        borderColor: '#ccc',
+        fontSize: 16,
     },
-    passwordInput: {
-        flex: 1,
-    },
-    signUpButton: {
+    button: {
         backgroundColor: '#4CAF50',
         paddingVertical: 15,
         borderRadius: 8,
         alignItems: 'center',
-        marginTop: 20,
+        marginVertical: 30,
     },
-    signUpButtonText: {
+    buttonText: {
         color: '#fff',
         fontSize: 18,
         fontWeight: 'bold',
     },
-    footerContainer: {
-        alignItems: 'center',
+    progressBar: {
+        height: 5,
+        borderRadius: 5,
         marginTop: 20,
+        marginBottom: 20,
     },
-    loginLink: {
-        color: '#4CAF50',
-        fontWeight: 'bold',
+    arrow: {
+        marginTop: 10,
     },
+    required: {
+        color: 'red',
+    },
+    cont1: {
+        marginTop:-390,
+    }
 });

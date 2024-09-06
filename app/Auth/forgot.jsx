@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import { useRouter } from 'expo-router';
 
-export default function register() {
+export default function forgot() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [country, setCountry] = useState('');
@@ -18,27 +18,17 @@ export default function register() {
 
             <View style={styles.container2}>
                 {/* Back Button */}
-                <TouchableOpacity onPress={() =>router.back()} style={styles.backButton}>
+                <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
                     <Ionicons name="arrow-back" size={24} color="black" />
                 </TouchableOpacity>
 
                 {/* Title Section */}
                 <View style={styles.headerContainer}>
-                    <Text style={styles.titleText}>Getting Started</Text>
-                    <Text style={styles.subtitleText}>Create your account first</Text>
+                    <Text style={styles.titleText}>Fogot Password</Text>
+                    <Text style={styles.subtitleText}>Enter your email to reset password</Text>
                 </View>
             </View>
 
-            {/* Input Fields */}
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Name</Text>
-                <TextInput
-                    value={name}
-                    onChangeText={setName}
-                    style={styles.input}
-                    placeholder="John Doe"
-                />
-            </View>
 
             <View style={styles.inputContainer}>
                 <Text style={styles.label}>Email</Text>
@@ -51,45 +41,16 @@ export default function register() {
                 />
             </View>
 
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Country</Text>
-                <View style={styles.pickerContainer}>
-                    <Picker
-                        selectedValue={country}
-                        onValueChange={(itemValue) => setCountry(itemValue)}
-                        style={styles.picker}>
-                        <Picker.Item label="Select Country" value="" />
-                        <Picker.Item label="Germany" value="Germany" />
-                        <Picker.Item label="United States" value="United States" />
-                        <Picker.Item label="Canada" value="Canada" />
-                    </Picker>
-                </View>
-            </View>
 
-            <View style={styles.inputContainer}>
-                <Text style={styles.label}>Password</Text>
-                <View style={styles.passwordContainer}>
-                    <TextInput
-                        value={password}
-                        onChangeText={setPassword}
-                        style={styles.passwordInput}
-                        placeholder="••••••••"
-                        secureTextEntry={!showPassword}
-                    />
-                    <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-                        <Ionicons name={showPassword ? 'eye' : 'eye-off'} size={24} color="gray" />
-                    </TouchableOpacity>
-                </View>
-            </View>
 
             {/* Sign Up Button */}
-            <TouchableOpacity style={styles.signUpButton} onPress={() => router.back()}>
-                <Text style={styles.signUpButtonText}>Sign up</Text>
+            <TouchableOpacity style={styles.signUpButton} onPress={() => router.push('/Auth/enterOTP')}>
+                <Text style={styles.signUpButtonText}>Continue</Text>
             </TouchableOpacity>
 
             {/* Login Link */}
             <View style={styles.footerContainer}>
-                <Text>Already a Member? <Text style={styles.loginLink} onPress={() => router.push("/Auth/login")}>Login</Text></Text>
+                <Text>Don't you have an account? <Text style={styles.loginLink} onPress={() => router.push("Auth/register")}>Register</Text></Text>
             </View>
         </View>
     );
@@ -194,5 +155,10 @@ const styles = StyleSheet.create({
         // borderRadius: 80,
         borderBottomRightRadius: 40,
         borderBottomLeftRadius: 40,
-    }
+    },
+    forgotLink:{
+        color: '#4CAF50',
+        fontWeight: 'bold',
+        marginTop: 10,
+    },
 });

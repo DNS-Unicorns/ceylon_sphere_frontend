@@ -65,6 +65,7 @@ export default function AdditionalDetails() {
             {/* Progress Bar */}
             <ProgressBar progress={progress} color="#4CAF50" style={styles.progressBar} />
 
+        <View style={styles.cont1}>
             <Text style={styles.stepText}>STEP 5</Text>
             <Text style={styles.titleText}>Additional Details</Text>
 
@@ -215,9 +216,11 @@ export default function AdditionalDetails() {
                 />
             </View>
 
+        </View>
+
             {/* Save & Continue Button */}
-            <TouchableOpacity onPress={handleSaveAndContinue} style={styles.button}>
-                <Text style={styles.buttonText}>Save & Continue</Text>
+            <TouchableOpacity onPress={() => router.push('/Visa/Front/index1')} style={styles.button}>
+                <Text style={styles.buttonText} >Save & Continue</Text>
             </TouchableOpacity>
         </ScrollView>
     );
@@ -287,4 +290,7 @@ const styles = StyleSheet.create({
     arrow: {
         marginTop: 10,
     },
+    cont1: {
+        marginTop:-520,
+    }
 });

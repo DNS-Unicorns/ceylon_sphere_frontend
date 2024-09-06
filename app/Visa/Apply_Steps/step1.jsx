@@ -37,7 +37,7 @@ export default function Step1() {
     {/* ProgressBar showing 10% progress for Step 1 */}
     <ProgressBar progress={progress} color="#4CAF50" style={styles.progressBar} />
 
-
+    <View style={styles.cont1}>
       <Text style={styles.stepText}>STEP 1</Text>
       <Text style={styles.titleText}>Eligibility Criteria</Text>
 
@@ -124,12 +124,14 @@ export default function Step1() {
           <Picker.Item label="Document 2" value="2" />
         </Picker>
       </View>
+    </View>
 
       <View style={styles.buttonContainer}>
         <Button title="Save & Continue" onPress={() => router.push('/Visa/Apply_Steps/step2')} color="#4CAF50" />
       </View>
     </ScrollView>
   );
+  
 }
 
 const styles = StyleSheet.create({
@@ -176,4 +178,7 @@ const styles = StyleSheet.create({
   required: {
     color: 'red',
   },
+  cont1: {
+    marginTop:-390,
+  }
 });

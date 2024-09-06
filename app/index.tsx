@@ -20,7 +20,7 @@ export default function Index() {
 
       <TouchableOpacity 
         style={styles.button} 
-        onPress={() => {router.push('/_sitemap')}}
+        onPress={() => {router.push('/Auth/login')}}
       >
         <Text style={styles.continueText}>Get Started</Text>
       </TouchableOpacity>

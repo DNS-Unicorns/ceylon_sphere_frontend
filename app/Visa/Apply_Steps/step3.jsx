@@ -63,6 +63,7 @@ export default function Step1() {
             {/* Progress Bar */}
             <ProgressBar progress={progress} color="#4CAF50" style={styles.progressBar} />
 
+        <View style={styles.cont1}>
             <Text style={styles.stepText}>STEP 3</Text>
             <Text style={styles.titleText}>Passport Details</Text>
 
@@ -156,6 +157,7 @@ export default function Step1() {
             <View style={styles.buttonContainer}>
                 <Button title="Save & Continue" onPress={() => router.push('/Visa/Apply_Steps/step4')} color="#4CAF50" />
             </View>
+        </View>
 
         </ScrollView>
     );
@@ -204,6 +206,9 @@ const styles = StyleSheet.create({
     },
     required: {
         color: 'red',
+    },
+    cont1: {
+        marginTop:-330,
     }
 });
 
